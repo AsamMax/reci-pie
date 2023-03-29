@@ -6,7 +6,7 @@
 $ yarn install
 ```
 
-## Run develipment
+## Run development
 
 ```console
 $ yarn run dev
