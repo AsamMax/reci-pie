@@ -34,11 +34,9 @@ header {
     }
 }
 main {
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--color-bg);
-    color: var(--color-fg);
-    display: grid;
-    place-items: center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 4rem 0 1rem;
 }
 </style>
