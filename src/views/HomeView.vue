@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TheRecipeCard from '../components/TheRecipeCard.vue'
+import TheRecipeCard from '@/components/TheRecipeCard.vue'
 </script>
 
 <template>

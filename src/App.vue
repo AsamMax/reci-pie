@@ -22,6 +22,7 @@ header {
     right: 0;
     z-index: 1;
     background-color: var(--color-bg-accent);
+
     a {
         display: inline-block;
         padding: 1rem;
@@ -33,6 +34,7 @@ header {
         }
     }
 }
+
 main {
     min-height: 100vh;
     display: flex;

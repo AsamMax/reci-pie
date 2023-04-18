@@ -1,24 +1,5 @@
 @import './base.css';
 
-html {
-    background-color: var(--color-bg);
-    color: var(--color-fg);
-}
-
-/* Firefox */
-html {
-    scrollbar-color: var(--color-fg-accent) var(--color-bg-accent);
-    scrollbar-width: thin;
-}
-
-/* WebKit and Chromiums */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-    background-color: var(--color-bg-accent);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--color-fg-accent);
-    border-radius: 5px;
-}
+@import './browserElements/body.css';
+@import './browserElements/scrollbar.css';
+@import './browserElements/inputs.css';
