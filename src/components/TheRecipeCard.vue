@@ -84,7 +84,7 @@ const edit = ref(false)
 
         .bubble {
             background-color: var(--color-bg);
-            color: var(--color-fg-accent);
+            color: var(--color-accent-1);
             aspect-ratio: 1/1;
             border-radius: 100%;
             vertical-align: middle;
@@ -101,7 +101,7 @@ const edit = ref(false)
 
         .icon {
             background-color: var(--color-bg);
-            color: var(--color-fg-accent);
+            color: var(--color-accent-1);
             aspect-ratio: 1/1;
             border-radius: 100%;
             vertical-align: middle;

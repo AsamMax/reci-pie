@@ -2,16 +2,18 @@ textarea::-webkit-resizer {
     border-width: 8px;
     border-style: solid;
     background-color: var(--color-bg-accent);
-    border-color: transparent var(--color-fg-accent) var(--color-fg-accent) transparent;
+    border-color: transparent var(--color-accent-1) var(--color-accent-1) transparent;
 }
-textarea, Input {
+textarea,
+Input {
     background-color: var(--color-bg-accent);
     color: var(--color-fg);
 }
-Input{
-    border-color: transparent transparent var(--color-fg-accent) transparent;
+Input {
+    border-color: transparent transparent var(--color-accent-1) transparent;
 }
-textarea:focus, input:focus{
+textarea:focus,
+input:focus {
     outline-style: solid;
     outline-width: 1px;
     outline-color: #ffffff77;

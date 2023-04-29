@@ -12,10 +12,12 @@ body {
     font-family: sans-serif;
 }
 
-/* Color scheme taken from https://colorhunt.co/palette/363333272121e16428f6e9e9 */
 :root {
-    --color-bg: #363333;
-    --color-bg-accent: #272121;
-    --color-fg: #f6e9e9;
-    --color-fg-accent: #e16428;
+    --color-bg: #f1f3f6;
+    --color-bg-accent: #d9d9d9;
+    --color-fg: #000000;
+    --color-accent-1: #ffc466;
+    --color-accent-2: #f9623e;
+    --color-accent-4: #8fa2ff;
+    --color-accent-4: #6ecfbd;
 }

@@ -1,6 +1,6 @@
 /* Firefox */
 html {
-    scrollbar-color: var(--color-fg-accent) var(--color-bg-accent);
+    scrollbar-color: var(--color-accent-1) var(--color-bg-accent);
     scrollbar-width: thin;
 }
 
@@ -12,6 +12,6 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--color-fg-accent);
+    background: var(--color-accent-1);
     border-radius: 5px;
 }

@@ -31,11 +31,11 @@ header {
     a {
         display: inline-block;
         padding: 1rem;
-        color: var(--color-fg-accent);
+        color: var(--color-accent-1);
         text-decoration: none;
 
         &:visited {
-            color: var(--color-fg-accent);
+            color: var(--color-accent-1);
         }
     }
 }
