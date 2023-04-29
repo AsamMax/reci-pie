@@ -1,15 +1,45 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { defineComponent, ref, watch } from 'vue'
+import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/user'
+
+const router = useRouter()
+const userStore = useUserStore()
+
+const usernameRef = ref('')
+const passwordRef = ref('')
+
+function login(event: Event) {
+    const username = usernameRef.value
+    const password = passwordRef.value
+    userStore.login(username, password)
+    event.preventDefault()
+}
+
+if (userStore.current) {
+    router.push('/')
+}
+watch(
+    () => userStore.current,
+    (currentUser) => {
+        if (currentUser) {
+            router.push('/')
+        }
+    }
+)
+</script>
 <template>
     <!-- Login form -->
     <div class="login">
         <h1>Login</h1>
         <form>
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" />
+            <input type="text" id="username" name="username" v-model="usernameRef" />
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" />
-            <button type="submit">Login</button>
+            <input type="password" id="password" name="password" v-model="passwordRef" />
+            <button type="submit" @click="login">Login</button>
         </form>
+        <div>{{ userStore.current }}</div>
     </div>
 </template>
 

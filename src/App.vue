@@ -1,17 +1,21 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import { useUserStore } from '@/stores/user'
+import LoginView from './views/LoginView.vue'
+
+const userStore = useUserStore()
 </script>
 
 <template>
-    <header>
+    <header v-if="userStore.isLoggedIn">
         <nav>
             <RouterLink to="/">Home</RouterLink>
             <RouterLink to="/about">About</RouterLink>
-            <RouterLink to="/login">Login</RouterLink>
         </nav>
     </header>
     <main>
-        <RouterView />
+        <RouterView v-if="userStore.isLoggedIn" />
+        <LoginView v-else />
     </main>
 </template>
 
