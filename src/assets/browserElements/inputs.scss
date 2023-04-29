@@ -8,13 +8,15 @@ textarea,
 Input {
     background-color: var(--color-bg-accent);
     color: var(--color-fg);
+    border-radius: 1rem;
 }
 Input {
-    border-color: transparent transparent var(--color-accent-1) transparent;
+    border-color: transparent;
+    padding: 0.5rem;
 }
 textarea:focus,
 input:focus {
     outline-style: solid;
-    outline-width: 1px;
-    outline-color: #ffffff77;
+    outline-color: transparent;
+    border: var(--color-accent-1) solid 0.2em;
 }
