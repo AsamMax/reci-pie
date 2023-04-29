@@ -7,6 +7,7 @@ import { RouterLink, RouterView } from 'vue-router'
         <nav>
             <RouterLink to="/">Home</RouterLink>
             <RouterLink to="/about">About</RouterLink>
+            <RouterLink to="/login">Login</RouterLink>
         </nav>
     </header>
     <main>
@@ -14,7 +15,7 @@ import { RouterLink, RouterView } from 'vue-router'
     </main>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 header {
     position: absolute;
     top: 0;
@@ -39,6 +40,7 @@ main {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    padding: 4rem 0 1rem;
+    padding: 4rem 0;
+    align-items: center;
 }
 </style>

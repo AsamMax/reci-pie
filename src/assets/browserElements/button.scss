@@ -1,0 +1,18 @@
+button {
+    background-color: var(--color-fg-accent);
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: var(--color-bg-accent);
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+        background-color: var(--color-bg);
+        color: var(--color-fg);
+    }
+    &:focus {
+        outline: none;
+    }
+}
