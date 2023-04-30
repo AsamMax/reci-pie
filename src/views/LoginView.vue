@@ -51,6 +51,11 @@ watch(
     padding: 2rem;
     width: min(30vw, 500px);
     margin: 0 auto;
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
     h1 {
         text-align: center;
     }

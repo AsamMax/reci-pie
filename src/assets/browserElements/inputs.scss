@@ -8,11 +8,11 @@ textarea,
 Input {
     background-color: var(--color-bg-accent);
     color: var(--color-fg);
-    border-radius: 1rem;
+    border-radius: 1.3rem;
 }
 Input {
     border-color: transparent;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
 }
 textarea:focus,
 input:focus {

@@ -28,15 +28,21 @@ const userStore = useUserStore()
 
 <style scoped lang="scss">
 header {
-    position: absolute;
+    position: fixed;
     inset: 0;
     bottom: auto;
     z-index: 1;
+    background-color: var(--color-bg-menu);
+    backdrop-filter: blur(5px);
+    max-width: 1400px;
+    margin: 0 auto;
+
     nav {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
         align-items: center;
         margin-top: 2rem;
+        margin-bottom: 2rem;
         img {
             height: 5rem;
             aspect-ratio: 1/1;
@@ -45,10 +51,10 @@ header {
         }
         a {
             display: inline-block;
-            padding: 1rem;
             color: var(--color-fg);
             text-decoration: none;
-            border-radius: 1em;
+            font-weight: 600;
+            padding: 0.2em 0.5em;
 
             &:visited {
                 color: var(--color-fg);
@@ -56,7 +62,10 @@ header {
             // loop from 1 to 4
             @for $i from 1 through 4 {
                 &:nth-child(#{$i}) {
-                    background-color: var(--color-accent-#{$i});
+                    &.router-link-active,
+                    &:hover {
+                        border-bottom: 5px solid var(--color-accent-#{$i});
+                    }
                 }
             }
         }
@@ -67,7 +76,7 @@ main {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    padding: 4rem 0;
+    padding: 10rem 0;
     align-items: center;
 }
 </style>
