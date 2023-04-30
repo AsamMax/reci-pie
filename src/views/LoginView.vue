@@ -55,6 +55,9 @@ watch(
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        input {
+            background-color: var(--color-bg);
+        }
     }
     h1 {
         text-align: center;

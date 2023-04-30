@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 import LoginView from './views/LoginView.vue'
+import router from './router'
 
 const userStore = useUserStore()
 </script>
@@ -9,10 +10,14 @@ const userStore = useUserStore()
 <template>
     <header v-if="userStore.isLoggedIn">
         <nav>
-            <RouterLink to="/">all recipies</RouterLink>
-            <RouterLink to="/about">what to eat?</RouterLink>
-            <RouterLink to="/about">fridge mode</RouterLink>
-            <RouterLink to="/about">dinner spinner</RouterLink>
+            <!-- iterate through router paths -->
+            <RouterLink
+                v-for="route in router.options.routes.filter((route) => route.meta?.inNavigation)"
+                :key="route.path"
+                :to="route.path"
+            >
+                {{ route.name }}
+            </RouterLink>
             <img
                 src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
                 alt="logo"
@@ -34,12 +39,12 @@ header {
     z-index: 1;
     background-color: var(--color-bg-menu);
     backdrop-filter: blur(5px);
-    max-width: 1400px;
+    max-width: 1500px;
     margin: 0 auto;
 
     nav {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         margin-top: 2rem;
         margin-bottom: 2rem;

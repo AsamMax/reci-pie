@@ -30,8 +30,7 @@ export const useUserStore = defineStore('user', () => {
             })
     }
     function loadUser() {
-        // /auth/users/me/ 
-        fetch('http://127.0.0.1:8000/auth/users/me/', {
+        fetch('http://127.0.0.1:8000/auth/me/', {
             headers: {
                 Authorization: `Bearer ${token.value}`
             }
