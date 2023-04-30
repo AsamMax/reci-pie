@@ -42,6 +42,7 @@ import CoverImage from '@/components/CoverImage.vue'
     h2 {
         text-align: center;
         font-weight: 600;
+        margin: 0.7em 0;
     }
     .image {
         width: 100%;
@@ -54,12 +55,14 @@ import CoverImage from '@/components/CoverImage.vue'
         gap: 0.5em;
         margin-top: 0.5em;
         .tag {
+            flex-basis: calc(50% - 0.25em);
             padding: 0.25em 0.5em;
-            border-radius: 0.5em;
+            border-radius: 1em;
+            color: var(--color-bg);
             // loop from 1 to 4
             @for $i from 1 through 4 {
                 &:nth-child(#{$i}) {
-                    background-color: var(--color-accent-#{$i});
+                    background-color: var(--color-accent-soft-#{$i});
                 }
             }
         }
