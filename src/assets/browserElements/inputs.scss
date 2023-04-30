@@ -11,12 +11,11 @@ Input {
     border-radius: 1.3rem;
 }
 Input {
-    border-color: transparent;
+    border: transparent solid 0.2em;
     padding: 0.5rem 1rem;
 }
 textarea:focus,
 input:focus {
-    outline-style: solid;
-    outline-color: transparent;
-    border: var(--color-accent-1) solid 0.2em;
+    outline: none;
+    border-color: var(--color-accent-1);
 }
