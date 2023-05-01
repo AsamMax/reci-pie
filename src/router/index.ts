@@ -5,6 +5,7 @@ import WhatToEatView from '@/views/WhatToEatView.vue'
 import FridgeModeView from '@/views/FridgeModeView.vue'
 import DinnerSpinnerView from '@/views/DinnerSpinnerView.vue'
 import LoginView from '@/views/LoginView.vue'
+import { useUserStore } from '@/stores/user'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,7 +22,7 @@ const router = createRouter({
         },
         {
             path: '/recipies/:id',
-            name: 'recipe',
+            name: 'single recipe',
             component: RecipeView,
             meta: {
                 requiresAuth: true,
@@ -66,5 +67,30 @@ const router = createRouter({
         }
     ]
 })
+
+
+router.beforeEach((to, from, next) => {
+    const userStore = useUserStore()
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        // this route requires auth, check if logged in (userStore)
+        // if not, redirect to login page.
+        if (!userStore.isLoggedIn) {
+            next({
+                path: '/login'
+            })
+            return
+        }
+    } else {
+        // if the user is logged in, don't let them go to the login page
+        if (userStore.isLoggedIn) {
+            next({
+                path: '/'
+            })
+            return
+        }
+    }
+    next() // make sure to always call next()!
+})
+
 
 export default router

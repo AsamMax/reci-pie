@@ -3,10 +3,14 @@ import dynamicStringInput from '@/components/IO/dynamicStringInput.vue'
 import { useRecipeStore } from '@/stores/recipe'
 import { ref } from 'vue'
 
+const props = defineProps<{
+    id: number
+}>()
+
 const recipeStore = useRecipeStore()
 
-if (recipeStore.recipe === undefined) {
-    recipeStore.loadRecipe(1)
+if (recipeStore.recipe === undefined || recipeStore.recipe.id !== props.id) {
+    recipeStore.loadRecipe(props.id)
 }
 
 const headline = ref('Shakshuka With Feta')
