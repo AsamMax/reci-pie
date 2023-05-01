@@ -1,6 +1,5 @@
 <script setup lang="ts">
 // image as prop
-import { defineProps } from 'vue'
 const props = defineProps<{ image: string }>()
 </script>
 <template>
