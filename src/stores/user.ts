@@ -34,9 +34,13 @@ export const useUserStore = defineStore('user', () => {
             headers: {
                 Authorization: `Bearer ${token.value}`
             }
-        }).then(response => response.json())
+        })
+            .then(response => response.json())
             .then(data => {
                 current.value = data
+            }).catch(error => {
+                logout()
+                console.error(error)
             })
     }
     function logout() {
@@ -46,9 +50,9 @@ export const useUserStore = defineStore('user', () => {
     }
 
     // when loading the store, try to load the user
-    if (token.value) {
+    if (token.value && !current.value) {
         loadUser()
     }
 
-    return { current, isLoggedIn, login, logout }
+    return { current, token, isLoggedIn, login, logout }
 })

@@ -49,7 +49,8 @@ watch(
     background-color: var(--color-bg-accent);
     border-radius: 1rem;
     padding: 2rem;
-    width: min(30vw, 500px);
+    width: 30em;
+    max-width: 80%;
     margin: 0 auto;
     form {
         display: flex;
