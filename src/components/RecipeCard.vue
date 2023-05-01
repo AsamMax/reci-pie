@@ -1,23 +1,40 @@
 <script setup lang="ts">
 import CoverImage from '@/components/CoverImage.vue'
+import router from '@/router'
+import type Recipe from '@/types/recipe'
+import DietBadge from './DietBadge.vue'
+// if no recipe is given, display a skeleton
+const props = defineProps<{
+    recipe?: Recipe
+}>()
+
+// redirect to recipe page
+const goToRecipe = () => {
+    if (props.recipe) {
+        router.push({ name: 'single recipe', params: { id: props.recipe.id } })
+    }
+}
+console.log(props.recipe?.name)
 </script>
 <template>
-    <div class="card">
-        <div class="categoryBadge">
-            <img src="https://cdn-icons-png.flaticon.com/512/723/723734.png" />
-        </div>
-        <div class="image">
-            <CoverImage
-                image="https://s-media-cache-ak0.pinimg.com/736x/57/98/9f/57989f2a2e186e38bf93429aa395120c.jpg"
-            />
-        </div>
+    <div class="card" :class="{ skeleton: props.recipe === undefined }" @click="goToRecipe">
+        <DietBadge :diet="props.recipe?.dietType" />
+        <CoverImage
+            class="image"
+            image="https://s-media-cache-ak0.pinimg.com/736x/57/98/9f/57989f2a2e186e38bf93429aa395120c.jpg"
+        />
         <div class="content">
-            <h2 class="title">shakshuka</h2>
+            <h2 class="title">{{ props.recipe?.name }}</h2>
             <div class="tags">
-                <span class="tag">vegeterian</span>
-                <span class="tag">breakfast</span>
-                <span class="tag">seasonal</span>
-                <span class="tag">streetfood?</span>
+                <span
+                    v-for="tag in [
+                        props.recipe?.dietType,
+                        props.recipe?.mealType,
+                        ...(props.recipe?.tags ?? [])
+                    ]"
+                    class="tag"
+                    >{{ tag }}</span
+                >
             </div>
         </div>
     </div>
@@ -25,20 +42,6 @@ import CoverImage from '@/components/CoverImage.vue'
 <style scoped lang="scss">
 .card {
     isolation: isolate;
-    .categoryBadge {
-        position: absolute;
-        top: 0.5em;
-        left: 0.5em;
-        background-color: var(--color-grey);
-        z-index: 1;
-        border-radius: 1em;
-        img {
-            width: 2em;
-            height: 2em;
-            margin: 0.7em 1em 0.5em;
-            filter: invert(1);
-        }
-    }
     h2 {
         text-align: center;
         font-weight: 600;

@@ -1,13 +1,38 @@
 <script setup lang="ts">
 import Searchbar from '@/components/Searchbar.vue'
 import RecipeCard from '@/components/RecipeCard.vue'
+import type Recipe from '@/types/recipe'
+import { onMounted, ref } from 'vue'
+import { useUserStore } from '@/stores/user'
+
+const userStore = useUserStore()
+const recipies = ref<Recipe[]>([])
+
+function loadRecipes() {
+    // request from backend
+    fetch('http://127.0.0.1:8000/recipies/', {
+        headers: {
+            Authorization: `Bearer ${userStore.token}`
+        }
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            recipies.value = data
+        })
+        .catch((error) => {
+            console.error('Error:', error)
+        })
+}
+onMounted(() => {
+    loadRecipes()
+})
 </script>
 
 <template>
     <div class="wrapper">
         <Searchbar class="search" />
         <div class="recipeGrid">
-            <RecipeCard v-for="_ in 15" :key="_" />
+            <RecipeCard v-for="recipe in recipies" :key="recipe.id" :recipe="recipe" />
         </div>
     </div>
 </template>
@@ -20,7 +45,7 @@ import RecipeCard from '@/components/RecipeCard.vue'
     padding: 0 1rem;
     text-align: center;
     .search {
-        margin: 4rem auto;
+        margin: 0 auto 4rem auto;
         width: 70%;
     }
     .recipeGrid {
