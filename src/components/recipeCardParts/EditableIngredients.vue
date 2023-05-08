@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import type Recipe from '@/types/recipe'
+import EditableText from '@/components/IO/EditableText.vue'
+import EditableNumber from '@/components/IO/EditableNumber.vue'
+import { computed, toRefs, watch } from 'vue'
 
 const props = withDefaults(
     defineProps<{
@@ -8,27 +11,63 @@ const props = withDefaults(
     }>(),
     {}
 )
-defineEmits<{ 'update:ingredients': Recipe['ingredients'] }>()
+const emit = defineEmits<{ (e: 'update:ingredients', value: Recipe['ingredients']): void }>()
+
+const ingredients = computed<Recipe['ingredients']>(() => {
+    if (props.edit && props.ingredients[props.ingredients.length - 1].name != '') {
+        props.ingredients.push({
+            name: '',
+            quantity: 0,
+            unit: ''
+        })
+    }
+    return props.ingredients
+})
+function updateIngredients() {
+    if (props.ingredients[props.ingredients.length - 1].name == '') {
+        props.ingredients.pop()
+    }
+    console.log(props.ingredients)
+
+    emit('update:ingredients', props.ingredients)
+}
 </script>
 <template>
     <div class="ingredients">
         <h3>Ingredients</h3>
         <ul>
-            <li v-for="(ingredient, index) in props.ingredients" :key="index">
-                <input
-                    type="text"
+            <li v-for="(ingredient, index) in ingredients" :key="index">
+                <EditableText
+                    type="singleline"
                     v-model="ingredient.name"
-                    :disabled="!props.edit"
-                    @change="$emit('update:ingredients', props.ingredients)"
+                    @update:model-value="updateIngredients"
+                    :edit="props.edit"
                 />
-                <input
-                    type="text"
+                <EditableNumber
                     v-model="ingredient.quantity"
-                    :disabled="!props.edit"
-                    @change="$emit('update:ingredients', props.ingredients)"
+                    @update:model-value="updateIngredients"
+                    :edit="props.edit"
                 />
             </li>
         </ul>
     </div>
 </template>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.ingredients {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    ul {
+        padding: 0;
+        margin: 0;
+        li {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+    }
+}
+</style>

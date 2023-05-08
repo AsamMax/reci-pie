@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import dynamicStringInput from '@/components/IO/dynamicStringInput.vue'
+import EditableText from '@/components/IO/EditableText.vue'
 import { useRecipeStore } from '@/stores/recipe'
 import { ref } from 'vue'
 
@@ -39,18 +39,8 @@ const edit = ref(false)
             <div class="icon" v-else @click="edit = !edit">✒</div>
         </div>
         <div id="body">
-            <dynamicStringInput
-                v-model="headline"
-                class="description"
-                type="headline"
-                :editable="edit"
-            />
-            <dynamicStringInput
-                v-model="description"
-                class="description"
-                type="paragraph"
-                :editable="edit"
-            />
+            <EditableText v-model="headline" class="description" type="headline" :edit="edit" />
+            <EditableText v-model="description" class="description" type="paragraph" :edit="edit" />
             <h2>Ingredients</h2>
             <ul>
                 <li v-for="ingredient in recipeStore.recipe?.ingredients || []">

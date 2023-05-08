@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type Recipe from '@/types/recipe'
+import EditableText from '@/components/IO/EditableText.vue'
 
 const props = withDefaults(
     defineProps<{
@@ -12,19 +13,13 @@ defineEmits<{ 'update:directions': Recipe['directions'] }>()
 </script>
 <template>
     <div class="ingredients">
-        <h3>Ingredients</h3>
+        <h3>Directions</h3>
         <ul>
             <li v-for="(direction, index) in props.directions" :key="index">
-                <input
-                    type="text"
+                <EditableText
+                    type="paragraph"
                     v-model="direction.description"
-                    :disabled="!props.edit"
-                    @change="$emit('update:ingredients', props.directions)"
-                />
-                <input
-                    type="text"
-                    v-model="direction.time"
-                    :disabled="!props.edit"
+                    :edit="props.edit"
                     @change="$emit('update:ingredients', props.directions)"
                 />
             </li>
