@@ -34,11 +34,17 @@ export const useUserStore = defineStore('user', () => {
             headers: {
                 Authorization: `Bearer ${token.value}`
             }
+        }).then(response => {
+            if (response.ok) {
+                return response.json()
+            }
+            // In the future, maybe handle different errors seperately
+            throw new Error(response.status + ' Something went wrong')
         })
-            .then(response => response.json())
             .then(data => {
                 current.value = data
-            }).catch(error => {
+            })
+            .catch(error => {
                 logout()
                 console.error(error)
             })

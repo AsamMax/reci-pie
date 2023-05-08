@@ -32,9 +32,19 @@ onMounted(() => {
     <div class="wrapper">
         <Searchbar class="search" />
         <div class="recipeGrid">
-            <RecipeCard v-for="recipe in recipies" :key="recipe.id" :recipe="recipe" />
+            <RecipeCard
+                v-for="recipe in recipies"
+                v-if="recipies.length"
+                :key="recipe.id"
+                :recipe="recipe"
+            />
+            <p v-else>sadly there are no reci-🥧s matching your search</p>
         </div>
     </div>
+    <!-- new recipe -->
+    <router-link to="/recipies/new" v-slot="{ href, navigate }">
+        <button :href="href" @click="navigate">+</button>
+    </router-link>
 </template>
 
 <style scoped lang="scss">
@@ -53,6 +63,20 @@ onMounted(() => {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 2rem;
+    }
+}
+button {
+    position: fixed;
+    inset: auto 1rem 1rem auto;
+    height: 3rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    &:hover {
+        background-color: var(--color-bg-accent);
     }
 }
 </style>

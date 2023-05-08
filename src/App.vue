@@ -37,7 +37,6 @@ header {
     inset: 0;
     bottom: auto;
     z-index: 1;
-    background-color: var(--color-bg-menu);
     backdrop-filter: blur(5px);
     max-width: 1500px;
     margin: 0 auto;

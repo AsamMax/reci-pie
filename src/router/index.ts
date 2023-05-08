@@ -6,6 +6,7 @@ import FridgeModeView from '@/views/FridgeModeView.vue'
 import DinnerSpinnerView from '@/views/DinnerSpinnerView.vue'
 import LoginView from '@/views/LoginView.vue'
 import { useUserStore } from '@/stores/user'
+import CreateRecipieView from '@/views/CreateRecipieView.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,6 +19,15 @@ const router = createRouter({
             meta: {
                 requiresAuth: true,
                 inNavigation: true
+            }
+        },
+        {
+            path: '/recipies/new',
+            name: 'new recipie',
+            component: CreateRecipieView,
+            meta: {
+                requiresAuth: true,
+                inNavigation: false
             }
         },
         {

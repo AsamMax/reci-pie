@@ -5,7 +5,7 @@ import type Recipe from '@/types/recipe'
 import DietBadge from './DietBadge.vue'
 // if no recipe is given, display a skeleton
 const props = defineProps<{
-    recipe?: Recipe
+    recipe: Recipe
 }>()
 
 // redirect to recipe page
@@ -14,7 +14,6 @@ const goToRecipe = () => {
         router.push({ name: 'single recipe', params: { id: props.recipe.id } })
     }
 }
-console.log(props.recipe?.name)
 </script>
 <template>
     <div class="card" :class="{ skeleton: props.recipe === undefined }" @click="goToRecipe">
