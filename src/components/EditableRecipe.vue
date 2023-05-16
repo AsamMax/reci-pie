@@ -11,6 +11,7 @@ const props = withDefaults(
     }>(),
     {}
 )
+const emit = defineEmits<{ (e: 'update:recipe', value: Recipe): void }>()
 </script>
 <template>
     <div class="card">
@@ -29,6 +30,7 @@ const props = withDefaults(
         <div class="ingredients-and-nutrition">
             <EditableIngredients
                 v-model:ingredients="props.recipe.ingredients"
+                @update:ingredients="emit('update:recipe',props.recipe)"
                 :edit="props.edit"
             />
             <EditableText type="paragraph" v-model="props.recipe.description" :edit="props.edit" />

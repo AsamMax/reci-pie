@@ -7,19 +7,16 @@ export const useRecipeStore = defineStore('recipe', () => {
     const recipe = ref<Recipe>()
     const userStore = useUserStore()
 
-    function loadRecipe(id: number) {
-        fetch(`http://127.0.0.1:8000/recipies/${id}`, {
+    async function load(id: number) {
+        const response = await fetch(`http://127.0.0.1:8000/recipies/${id}`, {
             headers: {
                 Authorization: `Bearer ${userStore.token}`
             }
         })
-            .then(response => response.json())
-            .then(data => {
-                recipe.value = data
-            })
-            .catch(error => {
-                console.error(error)
-            })
+        recipe.value = await response.json()
     }
-    return { recipe, loadRecipe }
+    async function saveOrUpdate(value: Recipe, id?:number){
+        
+    }
+    return { recipe, load,  }
 })

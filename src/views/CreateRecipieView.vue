@@ -4,7 +4,7 @@ import { DietType, MealType, RecipeTags } from '@/types/enums'
 import type Recipe from '@/types/recipe'
 import { ref } from 'vue'
 
-const exampleRecipe: Recipe = {
+const exampleRecipe = ref<Recipe>({
     id: 1,
     name: 'Example Recipe',
     ingredients: [
@@ -23,11 +23,11 @@ const exampleRecipe: Recipe = {
     dietType: DietType.vegetarian,
     mealType: MealType.dinner,
     tags: [RecipeTags.cheap, RecipeTags.easy]
-}
+})
 const edit = ref(false)
 </script>
 <template>
-    <EditableRecipe :recipe="exampleRecipe" :edit="edit">
+    <EditableRecipe v-model:recipe="exampleRecipe" :edit="edit">
         <template #buttons>
             <button @click="edit = !edit">edit</button>
         </template>

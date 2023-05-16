@@ -13,24 +13,37 @@ const props = withDefaults(
 )
 const emit = defineEmits<{ (e: 'update:ingredients', value: Recipe['ingredients']): void }>()
 
-const ingredients = computed<Recipe['ingredients']>(() => {
-    if (props.edit && props.ingredients[props.ingredients.length - 1].name != '') {
-        props.ingredients.push({
-            name: '',
-            quantity: 0,
-            unit: ''
-        })
-    }
-    return props.ingredients
-})
 function updateIngredients() {
-    if (props.ingredients[props.ingredients.length - 1].name == '') {
-        props.ingredients.pop()
+    if (props.edit) {
+        if (
+            props.ingredients.length == 0 ||
+            props.ingredients[props.ingredients.length - 1].name != ''
+        ) {
+            props.ingredients.push({
+                name: '',
+                quantity: 0,
+                unit: ''
+            })
+        }
+    } else {
+        while (props.ingredients[props.ingredients.length - 1].name.trim() == '') {
+            props.ingredients.pop()
+        }
     }
     console.log(props.ingredients)
 
     emit('update:ingredients', props.ingredients)
 }
+
+const ingredients = computed<Recipe['ingredients']>({
+    get() {
+        return props.ingredients
+    },
+    set(v: Recipe['ingredients']) {
+        updateIngredients()
+    }
+})
+watch(() => props.edit, updateIngredients)
 </script>
 <template>
     <div class="ingredients">
@@ -58,14 +71,15 @@ function updateIngredients() {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     ul {
         padding: 0;
         margin: 0;
+
         li {
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content: center;
             gap: 0.5rem;
         }
     }
