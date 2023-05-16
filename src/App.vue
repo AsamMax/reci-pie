@@ -33,7 +33,7 @@ const userStore = useUserStore()
 
 <style scoped lang="scss">
 header {
-    position: fixed;
+    position: sticky;
     inset: 0;
     bottom: auto;
     z-index: 1;
@@ -45,8 +45,8 @@ header {
         display: flex;
         justify-content: space-around;
         align-items: center;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
         img {
             height: 5rem;
             aspect-ratio: 1/1;
@@ -80,7 +80,7 @@ main {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    padding: 10rem 0;
+    padding: 15vh 0;
     align-items: center;
 }
 </style>
