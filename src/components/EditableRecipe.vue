@@ -11,9 +11,6 @@ const props = withDefaults(
     }>(),
     {}
 )
-function log() {
-    console.log(props.recipe)
-}
 </script>
 <template>
     <div class="card">
@@ -85,6 +82,9 @@ function log() {
         justify-content: space-between;
         gap: 1rem;
         margin-top: 1rem;
+        > *{
+            flex-basis: 100%;
+        }
     }
 }
 </style>
