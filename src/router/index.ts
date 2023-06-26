@@ -36,7 +36,8 @@ const router = createRouter({
             meta: {
                 requiresAuth: true,
                 inNavigation: false
-            }
+            },
+            props: true
         },
         {
             path: '/what-to-eat',
