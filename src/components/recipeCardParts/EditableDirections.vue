@@ -44,7 +44,7 @@ watch(() => props.edit, updateDirections)
 <template>
     <div class="directions">
         <h3>Directions</h3>
-        <ul>
+        <ol :class="{ edit }">
             <li v-for="(direction, index) in directions" :key="index">
                 <EditableText
                     type="paragraph"
@@ -53,7 +53,12 @@ watch(() => props.edit, updateDirections)
                     @update:model-value="updateDirections"
                 />
             </li>
-        </ul>
+        </ol>
     </div>
 </template>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+ol.edit {
+    list-style-type: none;
+    padding-left: 0;
+}
+</style>
