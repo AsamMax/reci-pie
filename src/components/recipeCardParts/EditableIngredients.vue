@@ -46,47 +46,35 @@ watch(() => props.edit, updateIngredients)
 </script>
 <template>
     <div class="ingredients">
-        <h3>Ingredients</h3>
-        <ul>
-            <li v-for="(ingredient, index) in ingredients" :key="index">
-                <EditableText
-                    type="singleline"
-                    v-model="ingredient.name"
-                    @update:model-value="updateIngredients"
-                    :edit="props.edit"
-                />
-                <EditableNumber
-                    v-model="ingredient.quantity"
-                    @update:model-value="updateIngredients"
-                    :edit="props.edit"
-                />
-                <EditableText
-                    type="singleline"
-                    v-model="ingredient.unit"
-                    @update:model-value="updateIngredients"
-                    :edit="props.edit"
-                />
-            </li>
-        </ul>
+        <div class="ingredient" v-for="(ingredient, index) in ingredients" :key="index">
+            <EditableText
+                type="singleline"
+                v-model="ingredient.name"
+                @update:model-value="updateIngredients"
+                :edit="props.edit"
+            />
+            <EditableNumber
+                v-model="ingredient.quantity"
+                @update:model-value="updateIngredients"
+                :edit="props.edit"
+            />
+            <EditableText
+                type="singleline"
+                v-model="ingredient.unit"
+                @update:model-value="updateIngredients"
+                :edit="props.edit"
+            />
+        </div>
     </div>
 </template>
 <style scoped lang="scss">
 .ingredients {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    grid-gap: 10px;
 
-    ul {
-        padding: 0;
-        margin: 0;
-
-        li {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 0.5rem;
-        }
+    .ingredient {
+        display: contents;
     }
 }
 </style>

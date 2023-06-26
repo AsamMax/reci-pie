@@ -28,14 +28,25 @@ const emit = defineEmits<{ (e: 'update:recipe', value: Recipe): void }>()
             <div class="button-group"><slot name="buttons" /></div>
         </div>
         <div class="ingredients-and-nutrition">
-            <EditableIngredients
-                v-model:ingredients="props.recipe.ingredients"
-                @update:ingredients="emit('update:recipe', props.recipe)"
-                :edit="props.edit"
-            />
-            <EditableText type="paragraph" v-model="props.recipe.description" :edit="props.edit" />
+            <div>
+                <h3>Ingredients</h3>
+                <EditableIngredients
+                    v-model:ingredients="props.recipe.ingredients"
+                    @update:ingredients="emit('update:recipe', props.recipe)"
+                    :edit="props.edit"
+                />
+            </div>
+            <div>
+                <h3>Description</h3>
+                <EditableText
+                    type="paragraph"
+                    v-model="props.recipe.description"
+                    :edit="props.edit"
+                />
+            </div>
         </div>
         <div class="directions">
+            <h3>Directions</h3>
             <EditableDirections
                 v-model:directions="props.recipe.directions"
                 @update:directions="emit('update:recipe', props.recipe)"
@@ -55,6 +66,9 @@ const emit = defineEmits<{ (e: 'update:recipe', value: Recipe): void }>()
     border: 1px solid black;
     border-radius: 0.5rem;
     box-shadow: 0 0 0.5rem black;
+    h3 {
+        font-size: x-large;
+    }
     .general {
         display: flex;
         flex-direction: row;

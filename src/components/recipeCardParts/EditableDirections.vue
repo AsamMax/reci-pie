@@ -43,7 +43,6 @@ watch(() => props.edit, updateDirections)
 </script>
 <template>
     <div class="directions">
-        <h3>Directions</h3>
         <ol :class="{ edit }">
             <li v-for="(direction, index) in directions" :key="index">
                 <EditableText
