@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import CoverImage from '@/components/CoverImage.vue'
 import router from '@/router'
-import type Recipe from '@/types/recipe'
+import type { SavedRecipe } from '@/types/recipe'
 import DietBadge from './DietBadge.vue'
 // if no recipe is given, display a skeleton
 const props = defineProps<{
-    recipe: Recipe
+    recipe: SavedRecipe
 }>()
 
 // redirect to recipe page

@@ -1,12 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AllRecipiesView from '../views/AllRecipiesView.vue'
-import RecipeView from '@/views/RecipeView.vue'
 import WhatToEatView from '@/views/WhatToEatView.vue'
 import FridgeModeView from '@/views/FridgeModeView.vue'
 import DinnerSpinnerView from '@/views/DinnerSpinnerView.vue'
 import LoginView from '@/views/LoginView.vue'
 import { useUserStore } from '@/stores/user'
-import CreateRecipieView from '@/views/CreateRecipieView.vue'
+import SingleRecipeView from '@/views/SingleRecipeView.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,7 +23,7 @@ const router = createRouter({
         {
             path: '/recipies/new',
             name: 'new recipie',
-            component: CreateRecipieView,
+            component: SingleRecipeView,
             meta: {
                 requiresAuth: true,
                 inNavigation: false
@@ -33,7 +32,7 @@ const router = createRouter({
         {
             path: '/recipies/:id',
             name: 'single recipe',
-            component: RecipeView,
+            component: SingleRecipeView,
             meta: {
                 requiresAuth: true,
                 inNavigation: false

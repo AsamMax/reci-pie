@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import Searchbar from '@/components/Searchbar.vue'
 import RecipeCard from '@/components/RecipeCard.vue'
-import type Recipe from '@/types/recipe'
+import type { SavedRecipe } from '@/types/recipe'
 import { onMounted, ref } from 'vue'
 import { useUserStore } from '@/stores/user'
 
 const userStore = useUserStore()
-const recipies = ref<Recipe[]>([])
+const recipies = ref<SavedRecipe[]>([])
 
 function loadRecipes() {
     // request from backend

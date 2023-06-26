@@ -10,7 +10,7 @@ export interface Direction {
     description: string
 }
 
-export default interface Recipe {
+export interface SavedRecipe {
     id: number
     name: string
     description: string
@@ -20,3 +20,9 @@ export default interface Recipe {
     ingredients: Ingredient[]
     directions: Direction[]
 }
+
+export type UnsavedRecipe = Omit<SavedRecipe, 'id'>
+
+type Recipe = SavedRecipe | UnsavedRecipe
+
+export default Recipe
