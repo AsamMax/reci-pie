@@ -19,7 +19,28 @@ export const useRecipeStore = defineStore('recipe', () => {
         return recipe.value
     }
     async function saveOrUpdate(value: SavedRecipe | UnsavedRecipe) {
-
+        let response: Response
+        if ('id' in value) {
+            response = await fetch(`http://127.0.0.1:8000/recipies/${value.id}`, {
+                method: 'PATCH',
+                headers: {
+                    Authorization: `Bearer ${userStore.token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(value)
+            })
+        } else {
+            response = await fetch(`http://127.0.0.1:8000/recipies/`, {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${userStore.token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(value)
+            })
+        }
+        recipe.value = await response.json() as SavedRecipe
+        return recipe.value
     }
-    return { load, saveOrUpdate }
+    return { cached: recipe, load, saveOrUpdate }
 })
