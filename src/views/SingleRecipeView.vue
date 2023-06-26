@@ -9,14 +9,14 @@ const exampleRecipe = ref<Recipe>({
     name: 'Example Recipe',
     ingredients: [
         {
-            name: 'Example Ingredient',
+            name: 'Love',
             quantity: 1,
-            unit: 'Example Unit'
+            unit: 'tbsp'
         }
     ],
     directions: [
         {
-            description: 'Example Direction'
+            description: 'Mix well'
         }
     ],
     description: 'Example Description',
