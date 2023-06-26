@@ -77,7 +77,7 @@ header {
 }
 
 main {
-    min-height: 100vh;
+    min-height: calc(100vh - 2 * 15vh);
     display: flex;
     justify-content: center;
     padding: 15vh 0;
