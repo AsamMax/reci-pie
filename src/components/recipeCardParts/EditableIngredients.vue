@@ -2,7 +2,7 @@
 import type Recipe from '@/types/recipe'
 import EditableText from '@/components/IO/EditableText.vue'
 import EditableNumber from '@/components/IO/EditableNumber.vue'
-import { computed, toRefs, watch } from 'vue'
+import { computed, watch } from 'vue'
 
 const props = withDefaults(
     defineProps<{
@@ -21,7 +21,7 @@ function updateIngredients() {
         ) {
             props.ingredients.push({
                 name: '',
-                quantity: 0,
+                quantity: 1,
                 unit: ''
             })
         }
@@ -30,7 +30,6 @@ function updateIngredients() {
             props.ingredients.pop()
         }
     }
-    console.log(props.ingredients)
 
     emit('update:ingredients', props.ingredients)
 }
@@ -58,6 +57,12 @@ watch(() => props.edit, updateIngredients)
                 />
                 <EditableNumber
                     v-model="ingredient.quantity"
+                    @update:model-value="updateIngredients"
+                    :edit="props.edit"
+                />
+                <EditableText
+                    type="singleline"
+                    v-model="ingredient.unit"
                     @update:model-value="updateIngredients"
                     :edit="props.edit"
                 />
