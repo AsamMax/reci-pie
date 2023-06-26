@@ -30,13 +30,17 @@ const emit = defineEmits<{ (e: 'update:recipe', value: Recipe): void }>()
         <div class="ingredients-and-nutrition">
             <EditableIngredients
                 v-model:ingredients="props.recipe.ingredients"
-                @update:ingredients="emit('update:recipe',props.recipe)"
+                @update:ingredients="emit('update:recipe', props.recipe)"
                 :edit="props.edit"
             />
             <EditableText type="paragraph" v-model="props.recipe.description" :edit="props.edit" />
         </div>
         <div class="directions">
-            <EditableDirections :directions="props.recipe.directions" :edit="props.edit" />
+            <EditableDirections
+                v-model:directions="props.recipe.directions"
+                @update:directions="emit('update:recipe', props.recipe)"
+                :edit="props.edit"
+            />
         </div>
     </div>
 </template>
@@ -84,7 +88,7 @@ const emit = defineEmits<{ (e: 'update:recipe', value: Recipe): void }>()
         justify-content: space-between;
         gap: 1rem;
         margin-top: 1rem;
-        > *{
+        > * {
             flex-basis: 100%;
         }
     }
