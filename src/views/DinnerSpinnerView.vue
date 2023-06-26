@@ -57,7 +57,7 @@ function spin() {
         <div class="wheel">
             <button class="spin" @click="spin">spin</button>
             <div class="pieces" ref="pieces">
-                <div v-for="recipe in recipies">{{ recipe.id }}</div>
+                <div v-for="recipe in recipies">{{ recipe.name }}</div>
             </div>
         </div>
     </template>
