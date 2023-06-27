@@ -54,6 +54,7 @@ function spin() {
         Sorry, this needs at least {{ numberOfRecipies }} recipies to work
     </h1>
     <template v-else>
+        <h1>spin to find out what you'll eat tonight</h1>
         <div class="wheel">
             <button class="spin" @click="spin">spin</button>
             <div class="pieces" ref="pieces">
