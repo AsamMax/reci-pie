@@ -18,5 +18,4 @@ $ yarn dev
 -   Small snippets (i.e. Stackoverflow answers, codepens) are mentioned where they are used
 -   Basic project Setup: https://github.com/vuejs/create-vue
 -   basic .gitignore: https://github.com/github/gitignore/blob/main/Node.gitignore
-
-*   Obviously the documentation of all libraries and frameworks used (vue, typescript, scss, )
+-   Obviously the official documentation of all libraries and frameworks used (vue, typescript, scss, web.dev & mozilla.org for html/css/js )

@@ -3,6 +3,9 @@ import type Recipe from '@/types/recipe'
 import EditableText from '@/components/IO/EditableText.vue'
 import EditableIngredients from '@/components/recipeParts/EditableIngredients.vue'
 import EditableDirections from '@/components/recipeParts/EditableDirections.vue'
+import Tag from './recipeParts/Tag.vue'
+import { ref } from 'vue'
+import TypeDialog from './recipeParts/TypeDialog.vue'
 
 const props = withDefaults(
     defineProps<{
@@ -12,6 +15,8 @@ const props = withDefaults(
     {}
 )
 const emit = defineEmits<{ (e: 'update:recipe', value: Recipe): void }>()
+
+const typeDialog = ref<typeof TypeDialog | null>(null)
 </script>
 <template>
     <div class="card">
@@ -26,6 +31,15 @@ const emit = defineEmits<{ (e: 'update:recipe', value: Recipe): void }>()
                     v-model="props.recipe.name"
                     :edit="props.edit"
                 />
+                <Tag
+                    :text="props.recipe.dietType"
+                    @click="props.edit && typeDialog?.toggle()"
+                ></Tag>
+                <TypeDialog ref="typeDialog" @update:diet-type="props.recipe.dietType = $event" />
+                <Tag :text="props.recipe.mealType"></Tag>
+                <div class="tagCloud">
+                    <Tag v-for="tag in props.recipe.tags" :text="tag" :key="tag" />
+                </div>
             </div>
             <div class="button-group"><slot name="buttons" /></div>
         </div>
@@ -65,7 +79,7 @@ const emit = defineEmits<{ (e: 'update:recipe', value: Recipe): void }>()
     max-width: 1400px;
     margin: 0 auto;
     padding: 1rem;
-    border: 1px solid black;
+    border: none;
     border-radius: 0.5rem;
     box-shadow: 0 0 0.5rem black;
     h3 {
@@ -85,8 +99,24 @@ const emit = defineEmits<{ (e: 'update:recipe', value: Recipe): void }>()
             border-radius: 0.5rem;
             margin-bottom: 1rem;
         }
-        .name {
-            margin: 0;
+        .column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            .name {
+                margin: 0;
+            }
+            .tagCloud {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                min-width: 50%;
+            }
         }
         .button-group {
             display: flex;

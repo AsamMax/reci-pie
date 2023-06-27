@@ -1,17 +1,17 @@
 <script setup lang="ts">
-// props: text
-
 const props = defineProps<{
     text: string
 }>()
+const emit = defineEmits<{
+    (e: 'click', value: MouseEvent): void
+}>()
 </script>
 <template>
-    <span class="tag">{{ text }}</span>
+    <span class="tag" @click="$emit('click', $event)">{{ text }}</span>
 </template>
 
 <style scoped lang="scss">
 .tag {
-    flex-basis: calc(50% - 0.25em);
     padding: 0.25em 0.5em;
     border-radius: 1em;
     color: var(--color-bg);
