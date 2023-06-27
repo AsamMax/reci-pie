@@ -8,6 +8,7 @@ import { ref } from 'vue'
 import TypeDialog from './recipeParts/TypeDialog.vue'
 import DietDialog from './recipeParts/DietDialog.vue'
 import TagDialog from './recipeParts/TagDialog.vue'
+import { getRecipeImage } from '@/util/recipeImage'
 
 const props = withDefaults(
     defineProps<{
@@ -25,9 +26,7 @@ const tagDialog = ref<typeof TagDialog | null>(null)
 <template>
     <div class="card">
         <div class="general">
-            <img
-                src="https://img.chefkoch-cdn.de/rezepte/1109971217065453/bilder/1085864/crop-960x720/shakshuka.jpg"
-            />
+            <img :src="getRecipeImage(props.recipe)" />
             <div class="column">
                 <EditableText
                     class="name"

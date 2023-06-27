@@ -4,6 +4,7 @@ import router from '@/router'
 import type { SavedRecipe } from '@/types/recipe'
 import DietBadge from './recipeParts/DietBadge.vue'
 import Tag from './recipeParts/Tag.vue'
+import { getRecipeImage } from '@/util/recipeImage'
 // if no recipe is given, display a skeleton
 const props = defineProps<{
     recipe: SavedRecipe
@@ -19,10 +20,7 @@ const goToRecipe = () => {
 <template>
     <div class="card" :class="{ skeleton: props.recipe === undefined }" @click="goToRecipe">
         <DietBadge :diet="props.recipe?.dietType" />
-        <CoverImage
-            class="image"
-            image="https://s-media-cache-ak0.pinimg.com/736x/57/98/9f/57989f2a2e186e38bf93429aa395120c.jpg"
-        />
+        <CoverImage class="image" :image="getRecipeImage(props.recipe)" />
         <div class="content">
             <h2 class="title">{{ props.recipe?.name }}</h2>
             <div class="tags">
@@ -60,3 +58,4 @@ const goToRecipe = () => {
     }
 }
 </style>
+@/util/recipeImage
