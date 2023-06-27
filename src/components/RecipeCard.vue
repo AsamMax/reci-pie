@@ -2,7 +2,7 @@
 import CoverImage from '@/components/CoverImage.vue'
 import router from '@/router'
 import type { SavedRecipe } from '@/types/recipe'
-import DietBadge from './DietBadge.vue'
+import DietBadge from './recipeParts/DietBadge.vue'
 import Tag from './recipeParts/Tag.vue'
 // if no recipe is given, display a skeleton
 const props = defineProps<{
