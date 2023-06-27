@@ -8,7 +8,7 @@ import router from '@/router'
 
 const props = withDefaults(
     defineProps<{
-        id?: number
+        id?: string
     }>(),
     { id: undefined }
 )
@@ -38,7 +38,7 @@ const edit = ref(false)
 
 onMounted(() => {
     if (props.id) {
-        recipeStore.load(props.id).then((recipe) => {
+        recipeStore.load(parseInt(props.id)).then((recipe) => {
             if (recipe != undefined) {
                 editableRecipe.value = recipe
             }
@@ -55,7 +55,7 @@ async function switchEdit() {
     if (edit.value) {
         const recipe = await recipeStore.saveOrUpdate(editableRecipe.value)
         editableRecipe.value = recipe
-        router.push({ name: 'single recipe', params: { id: recipe.id.toString() } })
+        router.push({ name: 'single recipe', params: { id: recipe.id } })
     }
     edit.value = !edit.value
 }

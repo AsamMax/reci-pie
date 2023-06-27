@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type Recipe from '@/types/recipe'
 import EditableText from '@/components/IO/EditableText.vue'
-import EditableIngredients from '@/components/recipeCardParts/EditableIngredients.vue'
-import EditableDirections from '@/components/recipeCardParts/EditableDirections.vue'
+import EditableIngredients from '@/components/recipeParts/EditableIngredients.vue'
+import EditableDirections from '@/components/recipeParts/EditableDirections.vue'
 
 const props = withDefaults(
     defineProps<{
@@ -19,12 +19,14 @@ const emit = defineEmits<{ (e: 'update:recipe', value: Recipe): void }>()
             <img
                 src="https://img.chefkoch-cdn.de/rezepte/1109971217065453/bilder/1085864/crop-960x720/shakshuka.jpg"
             />
-            <EditableText
-                class="name"
-                type="headline"
-                v-model="props.recipe.name"
-                :edit="props.edit"
-            />
+            <div class="column">
+                <EditableText
+                    class="name"
+                    type="headline"
+                    v-model="props.recipe.name"
+                    :edit="props.edit"
+                />
+            </div>
             <div class="button-group"><slot name="buttons" /></div>
         </div>
         <div class="ingredients-and-nutrition">

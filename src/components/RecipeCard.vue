@@ -3,6 +3,7 @@ import CoverImage from '@/components/CoverImage.vue'
 import router from '@/router'
 import type { SavedRecipe } from '@/types/recipe'
 import DietBadge from './DietBadge.vue'
+import Tag from './recipeParts/Tag.vue'
 // if no recipe is given, display a skeleton
 const props = defineProps<{
     recipe: SavedRecipe
@@ -25,15 +26,15 @@ const goToRecipe = () => {
         <div class="content">
             <h2 class="title">{{ props.recipe?.name }}</h2>
             <div class="tags">
-                <span
+                <Tag
                     v-for="tag in [
                         props.recipe?.dietType,
                         props.recipe?.mealType,
                         ...(props.recipe?.tags ?? [])
                     ]"
-                    class="tag"
-                    >{{ tag }}</span
-                >
+                    :text="tag"
+                    :key="tag"
+                />
             </div>
         </div>
     </div>
@@ -56,18 +57,6 @@ const goToRecipe = () => {
         flex-wrap: wrap;
         gap: 0.5em;
         margin-top: 0.5em;
-        .tag {
-            flex-basis: calc(50% - 0.25em);
-            padding: 0.25em 0.5em;
-            border-radius: 1em;
-            color: var(--color-bg);
-            // loop from 1 to 4
-            @for $i from 1 through 4 {
-                &:nth-child(#{$i}) {
-                    background-color: var(--color-accent-soft-#{$i});
-                }
-            }
-        }
     }
 }
 </style>
