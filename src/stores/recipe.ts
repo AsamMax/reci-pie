@@ -10,7 +10,7 @@ export const useRecipeStore = defineStore('recipe', () => {
 
     async function load(id: number) {
         if (recipe.value?.id === id) { return recipe.value; }
-        const response = await fetch(`http://127.0.0.1:8000/recipies/${id}`, {
+        const response = await fetch(import.meta.env.VITE_API_RECIPIES_URL + id, {
             headers: {
                 Authorization: `Bearer ${userStore.token}`
             }
@@ -22,7 +22,7 @@ export const useRecipeStore = defineStore('recipe', () => {
     async function saveOrUpdate(value: SavedRecipe | UnsavedRecipe) {
         let response: Response
         if ('id' in value) {
-            response = await fetch(`http://127.0.0.1:8000/recipies/${value.id}`, {
+            response = await fetch(import.meta.env.VITE_API_RECIPIES_URL + value.id, {
                 method: 'PATCH',
                 headers: {
                     Authorization: `Bearer ${userStore.token}`,
@@ -31,7 +31,7 @@ export const useRecipeStore = defineStore('recipe', () => {
                 body: JSON.stringify(value)
             })
         } else {
-            response = await fetch(`http://127.0.0.1:8000/recipies/`, {
+            response = await fetch(import.meta.env.VITE_API_RECIPIES_URL, {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${userStore.token}`,

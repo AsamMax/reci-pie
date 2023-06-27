@@ -10,7 +10,7 @@ export const useUserStore = defineStore('user', () => {
 
     function login(username: string, password: string) {
         // send as form data
-        fetch('http://127.0.0.1:8000/auth/token/', {
+        fetch(import.meta.env.VITE_API_TOKEN_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -30,7 +30,8 @@ export const useUserStore = defineStore('user', () => {
             })
     }
     function loadUser() {
-        fetch('http://127.0.0.1:8000/auth/me/', {
+
+        fetch(import.meta.env.VITE_API_ME_URL, {
             headers: {
                 Authorization: `Bearer ${token.value}`
             }

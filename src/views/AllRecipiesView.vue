@@ -10,7 +10,7 @@ const recipies = ref<SavedRecipe[]>([])
 
 function loadRecipes() {
     // request from backend
-    fetch('http://127.0.0.1:8000/recipies/', {
+    fetch(import.meta.env.VITE_API_RECIPIES_URL, {
         headers: {
             Authorization: `Bearer ${userStore.token}`
         }

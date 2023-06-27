@@ -10,7 +10,8 @@ const recipies = ref<SavedRecipe[]>([])
 onMounted(() => {
     // request from backend
     fetch(
-        'http://127.0.0.1:8000/recipies/?' +
+        import.meta.env.VITE_API_RECIPIES_URL +
+            '?' +
             new URLSearchParams({
                 order: 'random',
                 limit: '3'
