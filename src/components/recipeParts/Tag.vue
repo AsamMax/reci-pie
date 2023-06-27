@@ -15,7 +15,8 @@ const emit = defineEmits<{
     padding: 0.25em 0.5em;
     border-radius: 1em;
     color: var(--color-bg);
-    // loop from 1 to 4
+    text-align: center;
+
     @for $i from 1 through 4 {
         &:nth-child(4n + #{$i}) {
             background-color: var(--color-accent-soft-#{$i});

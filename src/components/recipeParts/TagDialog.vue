@@ -1,7 +1,16 @@
 <script setup lang="ts">
-import { DietType } from '@/types/enums'
+import { RecipeTags } from '@/types/enums'
 import { ref } from 'vue'
 import Tag from './Tag.vue'
+
+const props = withDefaults(
+    defineProps<{
+        tags: RecipeTags[]
+    }>(),
+    {
+        tags: () => [] // function required since arrays are mutable
+    }
+)
 
 const open = ref(false)
 const dialog = ref<HTMLDialogElement | null>(null)
@@ -17,17 +26,27 @@ function toggle() {
 defineExpose({
     toggle
 })
-defineEmits<{ (e: 'update:dietType', value: DietType): void }>()
+const emit = defineEmits<{ (e: 'update:tags', value: RecipeTags[]): void }>()
+
+function toggleTag(tag: RecipeTags) {
+    if (props.tags.includes(tag)) {
+        props.tags.splice(props.tags.indexOf(tag), 1)
+    } else {
+        props.tags.push(tag)
+    }
+    emit('update:tags', props.tags)
+}
 </script>
 <template>
     <dialog ref="dialog">
-        <h3>Diet Type</h3>
+        <h3>Tags</h3>
         <div class="tags">
             <Tag
-                v-for="singleType in DietType"
-                :text="singleType"
-                :key="singleType"
-                @click="$emit('update:dietType', singleType), toggle()"
+                :class="{ inactive: !props.tags.includes(tag) }"
+                v-for="tag in RecipeTags"
+                :text="tag"
+                :key="tag"
+                @click="toggleTag(tag)"
             />
         </div>
         <div class="button-group">
@@ -50,6 +69,9 @@ dialog {
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 0.3rem;
         margin-bottom: 0.5rem;
+        .inactive {
+            opacity: 0.5;
+        }
     }
 }
 </style>

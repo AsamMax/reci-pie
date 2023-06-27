@@ -24,10 +24,10 @@ defineEmits<{ (e: 'update:mealType', value: MealType): void }>()
         <h3>Meal Type</h3>
         <div class="tags">
             <Tag
-                v-for="type in MealType"
-                :text="type"
-                :key="type"
-                @click="$emit('update:mealType', type), toggle()"
+                v-for="singleType in MealType"
+                :text="singleType"
+                :key="singleType"
+                @click="$emit('update:mealType', singleType), toggle()"
             />
         </div>
         <div class="button-group">

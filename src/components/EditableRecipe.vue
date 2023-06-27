@@ -7,6 +7,7 @@ import Tag from './recipeParts/Tag.vue'
 import { ref } from 'vue'
 import TypeDialog from './recipeParts/TypeDialog.vue'
 import DietDialog from './recipeParts/DietDialog.vue'
+import TagDialog from './recipeParts/TagDialog.vue'
 
 const props = withDefaults(
     defineProps<{
@@ -17,8 +18,9 @@ const props = withDefaults(
 )
 const emit = defineEmits<{ (e: 'update:recipe', value: Recipe): void }>()
 
-const typeDialog = ref<typeof TypeDialog | null>(null)
 const dietDialog = ref<typeof DietDialog | null>(null)
+const typeDialog = ref<typeof TypeDialog | null>(null)
+const tagDialog = ref<typeof TagDialog | null>(null)
 </script>
 <template>
     <div class="card">
@@ -38,8 +40,18 @@ const dietDialog = ref<typeof DietDialog | null>(null)
                 <Tag :text="props.recipe.mealType" @click="props.edit && typeDialog?.toggle()" />
                 <TypeDialog ref="typeDialog" @update:meal-type="props.recipe.mealType = $event" />
                 <div class="tagCloud">
-                    <Tag v-for="tag in props.recipe.tags" :text="tag" :key="tag" />
+                    <Tag
+                        v-for="tag in props.recipe.tags"
+                        :text="tag"
+                        :key="tag"
+                        @click="props.edit && tagDialog?.toggle()"
+                    />
                 </div>
+                <TagDialog
+                    :tags="props.recipe.tags"
+                    ref="tagDialog"
+                    @update:tags="props.recipe.tags = $event"
+                />
             </div>
             <div class="button-group"><slot name="buttons" /></div>
         </div>
