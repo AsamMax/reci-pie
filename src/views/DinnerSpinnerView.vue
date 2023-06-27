@@ -66,6 +66,9 @@ function spin() {
 </template>
 
 <style scoped lang="scss">
+h1 {
+    margin-bottom: 1em;
+}
 .wheel {
     height: 100%;
     width: 100%;
@@ -74,54 +77,52 @@ function spin() {
     align-items: center;
     justify-content: center;
     position: relative;
-}
-.pieces {
-    width: 500px;
-    height: 500px;
-    background-color: #ccc;
-    border-radius: 50%;
-    border: 15px solid #dde;
-    position: relative;
-    overflow: hidden;
-    transition: 5s;
-}
-
-.pieces div {
-    height: 50%;
-    width: 42%;
-    padding-top: 3%;
-    position: absolute;
-    clip-path: polygon(100% 0, 50% 100%, 0 0);
-    transform: translateX(-50%);
-    transform-origin: bottom;
-    text-align: center;
-    display: flex;
-    align-items: start;
-    justify-content: center;
-    color: #fff;
-    left: 29%;
-    overflow-wrap: break-word;
-}
-
-@for $i from 1 through 8 {
-    .pieces :nth-child(#{$i}) {
-        background-color: var(--color-wheel-#{$i});
-        transform: rotate(calc(360deg / 8 * #{$i}));
+    .pieces {
+        width: 500px;
+        height: 500px;
+        background-color: #ccc;
+        border-radius: 50%;
+        border: 15px solid #dde;
+        position: relative;
+        overflow: hidden;
+        transition: 5s;
+        div {
+            height: 50%;
+            width: 42%;
+            padding-top: 3%;
+            position: absolute;
+            clip-path: polygon(100% 0, 50% 100%, 0 0);
+            transform: translateX(-50%);
+            transform-origin: bottom;
+            text-align: center;
+            display: flex;
+            align-items: start;
+            justify-content: center;
+            color: #fff;
+            left: 29%;
+            overflow-wrap: break-word;
+            @for $i from 1 through 8 {
+                &:nth-child(#{$i}) {
+                    background-color: var(--color-wheel-#{$i});
+                    transform: rotate(calc(360deg / 8 * #{$i}));
+                }
+            }
+        }
     }
-}
 
-.spin {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    background-color: #e2e2e2;
-    border: 0.5em solid #fff;
-    color: #a2a2a2;
-    aspect-ratio: 1 / 1;
-    width: 5em;
-    border-radius: 50%;
-    padding: 0;
+    .spin {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        background-color: #e2e2e2;
+        border: 0.5em solid #fff;
+        color: #a2a2a2;
+        aspect-ratio: 1 / 1;
+        width: 5em;
+        border-radius: 50%;
+        padding: 0;
+    }
 }
 </style>

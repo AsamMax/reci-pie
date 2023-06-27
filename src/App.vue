@@ -74,10 +74,11 @@ header {
 }
 
 main {
-    min-height: calc(100vh - 2 * 15vh);
+    min-height: calc(100vh - 2 * 10vh);
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    padding: 15vh 0;
+    padding: 10vh 0;
     align-items: center;
 }
 </style>
