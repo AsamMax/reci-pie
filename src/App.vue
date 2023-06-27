@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 import LoginView from './views/LoginView.vue'
+import accountBadge from '@/assets/images/account.svg'
 import router from './router'
 
 const userStore = useUserStore()
@@ -18,11 +19,7 @@ const userStore = useUserStore()
             >
                 {{ route.name }}
             </RouterLink>
-            <img
-                src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
-                alt="logo"
-                @click="userStore.logout"
-            />
+            <img :src="accountBadge" alt="logout" @click="userStore.logout" />
         </nav>
     </header>
     <main>

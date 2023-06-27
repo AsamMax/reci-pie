@@ -18,6 +18,7 @@ export const useRecipeStore = defineStore('recipe', () => {
         recipe.value = await response.json()
         return recipe.value
     }
+
     async function saveOrUpdate(value: SavedRecipe | UnsavedRecipe) {
         let response: Response
         if ('id' in value) {
