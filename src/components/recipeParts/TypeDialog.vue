@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DietType } from '@/types/enums'
+import { MealType } from '@/types/enums'
 import { ref } from 'vue'
 import Tag from './Tag.vue'
 
@@ -17,17 +17,17 @@ function toggle() {
 defineExpose({
     toggle
 })
-defineEmits<{ (e: 'update:dietType', value: DietType): void }>()
+defineEmits<{ (e: 'update:mealType', value: MealType): void }>()
 </script>
 <template>
     <dialog ref="dialog">
         <h3>Meal Type</h3>
         <div class="tags">
             <Tag
-                v-for="type in DietType"
+                v-for="type in MealType"
                 :text="type"
                 :key="type"
-                @click="$emit('update:dietType', type), toggle()"
+                @click="$emit('update:mealType', type), toggle()"
             />
         </div>
         <div class="button-group">

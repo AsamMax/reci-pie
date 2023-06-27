@@ -6,6 +6,7 @@ import EditableDirections from '@/components/recipeParts/EditableDirections.vue'
 import Tag from './recipeParts/Tag.vue'
 import { ref } from 'vue'
 import TypeDialog from './recipeParts/TypeDialog.vue'
+import DietDialog from './recipeParts/DietDialog.vue'
 
 const props = withDefaults(
     defineProps<{
@@ -17,6 +18,7 @@ const props = withDefaults(
 const emit = defineEmits<{ (e: 'update:recipe', value: Recipe): void }>()
 
 const typeDialog = ref<typeof TypeDialog | null>(null)
+const dietDialog = ref<typeof DietDialog | null>(null)
 </script>
 <template>
     <div class="card">
@@ -31,12 +33,10 @@ const typeDialog = ref<typeof TypeDialog | null>(null)
                     v-model="props.recipe.name"
                     :edit="props.edit"
                 />
-                <Tag
-                    :text="props.recipe.dietType"
-                    @click="props.edit && typeDialog?.toggle()"
-                ></Tag>
-                <TypeDialog ref="typeDialog" @update:diet-type="props.recipe.dietType = $event" />
-                <Tag :text="props.recipe.mealType"></Tag>
+                <Tag :text="props.recipe.dietType" @click="props.edit && dietDialog?.toggle()" />
+                <DietDialog ref="dietDialog" @update:diet-type="props.recipe.dietType = $event" />
+                <Tag :text="props.recipe.mealType" @click="props.edit && typeDialog?.toggle()" />
+                <TypeDialog ref="typeDialog" @update:meal-type="props.recipe.mealType = $event" />
                 <div class="tagCloud">
                     <Tag v-for="tag in props.recipe.tags" :text="tag" :key="tag" />
                 </div>
