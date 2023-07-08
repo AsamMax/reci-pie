@@ -9,7 +9,7 @@ const recipeStore = useRecipeStore()
 const recipies = ref<SavedRecipe[]>([])
 
 onMounted(async () => {
-    recipies.value = await recipeStore.allRecipies(true, 3)
+    recipies.value = await recipeStore.allRecipies(undefined, true, 3)
 })
 </script>
 <template>

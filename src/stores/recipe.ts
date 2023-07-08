@@ -44,13 +44,16 @@ export const useRecipeStore = defineStore('recipe', () => {
         return cachedRecipe.value
     }
 
-    async function allRecipies(randomOrder: boolean = false, limit?: number): Promise<SavedRecipe[]> {
+    async function allRecipies(search?: string, randomOrder: boolean = false, limit?: number): Promise<SavedRecipe[]> {
         var url = new URL(import.meta.env.VITE_API_RECIPIES_URL)
         if (randomOrder) {
             url.searchParams.append('order', 'random')
         }
         if (limit) {
             url.searchParams.append('limit', limit.toString())
+        }
+        if (search) {
+            url.searchParams.append('search', search)
         }
         const response = await fetch(url, {
             headers: {

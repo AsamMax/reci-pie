@@ -12,7 +12,7 @@ const recipies = ref<SavedRecipe[]>([])
 const pieces = ref<HTMLDivElement | null>(null)
 
 onMounted(async () => {
-    recipies.value = await recipeStore.allRecipies(true, numberOfRecipies)
+    recipies.value = await recipeStore.allRecipies(undefined, true, numberOfRecipies)
 })
 function spin() {
     if (!pieces.value) {

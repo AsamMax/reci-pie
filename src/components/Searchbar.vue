@@ -1,6 +1,20 @@
-<script setup lang="ts" />
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const props = withDefaults(
+    defineProps<{
+        text: string
+    }>(),
+    { text: '' }
+)
+const emit = defineEmits<{ (e: 'update:text', value: string): void }>()
+</script>
 <template>
-    <input placeholder="what recipe are you searching for?" />
+    <input
+        placeholder="what recipe are you searching for?"
+        v-model="text"
+        @change="emit('update:text', text)"
+    />
 </template>
 <style scoped lang="scss">
 input {

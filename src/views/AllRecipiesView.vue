@@ -8,15 +8,15 @@ import { useRecipeStore } from '@/stores/recipe'
 const recipeStore = useRecipeStore()
 const recipies = ref<SavedRecipe[]>([])
 
-async function loadRecipes() {
-    recipies.value = await recipeStore.allRecipies()
+async function loadRecipes(searchText?: string) {
+    recipies.value = await recipeStore.allRecipies(searchText)
 }
 onMounted(loadRecipes)
 </script>
 
 <template>
     <div class="wrapper">
-        <Searchbar class="search" />
+        <Searchbar class="search" @update:text="loadRecipes($event)" />
         <div class="recipeGrid">
             <RecipeCard
                 v-for="recipe in recipies"
