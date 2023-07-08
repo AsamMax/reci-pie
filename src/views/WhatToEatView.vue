@@ -3,32 +3,13 @@ import { useUserStore } from '@/stores/user'
 import RecipeCard from '@/components/RecipeCard.vue'
 import type { SavedRecipe } from '@/types/recipe'
 import { onMounted, ref } from 'vue'
+import { useRecipeStore } from '@/stores/recipe'
 
-const userStore = useUserStore()
+const recipeStore = useRecipeStore()
 const recipies = ref<SavedRecipe[]>([])
 
-onMounted(() => {
-    // request from backend
-    fetch(
-        import.meta.env.VITE_API_RECIPIES_URL +
-            '?' +
-            new URLSearchParams({
-                order: 'random',
-                limit: '3'
-            }),
-        {
-            headers: {
-                Authorization: `Bearer ${userStore.token}`
-            }
-        }
-    )
-        .then((response) => response.json())
-        .then((data) => {
-            recipies.value = data
-        })
-        .catch((error) => {
-            console.error('Error:', error)
-        })
+onMounted(async () => {
+    recipies.value = await recipeStore.allRecipies(true, 3)
 })
 </script>
 <template>

@@ -1,37 +1,18 @@
 <script setup lang="ts">
 import router from '@/router'
+import { useRecipeStore } from '@/stores/recipe'
 import { useUserStore } from '@/stores/user'
 import type { SavedRecipe } from '@/types/recipe'
 import { onMounted, ref } from 'vue'
 
 const numberOfRecipies = 8
 
-const userStore = useUserStore()
+const recipeStore = useRecipeStore()
 const recipies = ref<SavedRecipe[]>([])
 const pieces = ref<HTMLDivElement | null>(null)
 
-onMounted(() => {
-    // request from backend
-    fetch(
-        import.meta.env.VITE_API_RECIPIES_URL +
-            '?' +
-            new URLSearchParams({
-                order: 'random',
-                limit: numberOfRecipies.toString()
-            }),
-        {
-            headers: {
-                Authorization: `Bearer ${userStore.token}`
-            }
-        }
-    )
-        .then((response) => response.json())
-        .then((data) => {
-            recipies.value = data
-        })
-        .catch((error) => {
-            console.error('Error:', error)
-        })
+onMounted(async () => {
+    recipies.value = await recipeStore.allRecipies(true, numberOfRecipies)
 })
 function spin() {
     if (!pieces.value) {

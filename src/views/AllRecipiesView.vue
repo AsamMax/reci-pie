@@ -3,29 +3,15 @@ import Searchbar from '@/components/Searchbar.vue'
 import RecipeCard from '@/components/RecipeCard.vue'
 import type { SavedRecipe } from '@/types/recipe'
 import { onMounted, ref } from 'vue'
-import { useUserStore } from '@/stores/user'
+import { useRecipeStore } from '@/stores/recipe'
 
-const userStore = useUserStore()
+const recipeStore = useRecipeStore()
 const recipies = ref<SavedRecipe[]>([])
 
-function loadRecipes() {
-    // request from backend
-    fetch(import.meta.env.VITE_API_RECIPIES_URL, {
-        headers: {
-            Authorization: `Bearer ${userStore.token}`
-        }
-    })
-        .then((response) => response.json())
-        .then((data) => {
-            recipies.value = data
-        })
-        .catch((error) => {
-            console.error('Error:', error)
-        })
+async function loadRecipes() {
+    recipies.value = await recipeStore.allRecipies()
 }
-onMounted(() => {
-    loadRecipes()
-})
+onMounted(loadRecipes)
 </script>
 
 <template>

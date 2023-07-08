@@ -36,14 +36,14 @@ const recipeStore = useRecipeStore()
 const loading = ref(true)
 const edit = ref(false)
 
-onMounted(() => {
+onMounted(async () => {
     if (props.id) {
-        recipeStore.load(parseInt(props.id)).then((recipe) => {
-            if (recipe != undefined) {
-                editableRecipe.value = recipe
-            }
-            loading.value = false
-        })
+        const recipe = await recipeStore.load(parseInt(props.id))
+
+        if (recipe != undefined) {
+            editableRecipe.value = recipe
+        }
+        loading.value = false
     } else {
         // new recipe
         loading.value = false
