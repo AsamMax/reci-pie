@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
+@import './variables.scss';
 
 *,
 *::before,
@@ -14,26 +15,28 @@ body {
     font-family: 'Lexend', sans-serif;
 }
 
+// These are set as CSS variables so they could be changed at runtime
+// But this is not implemented yet
 :root {
-    --color-bg: #f1f3f6;
-    --color-bg-menu: #eff2f5;
-    --color-bg-accent: #d9d9d9;
-    --color-fg: #000000;
-    --color-grey: #20263c;
-    --color-accent-1: #ffc466;
-    --color-accent-2: #f9623e;
-    --color-accent-3: #8fa2ff;
-    --color-accent-4: #6ecfbd;
-    --color-accent-soft-1: #fec36a;
-    --color-accent-soft-2: #f8623f;
-    --color-accent-soft-3: #557ff0;
-    --color-accent-soft-4: #6dcebb;
-    --color-wheel-1: #f9623e;
-    --color-wheel-2: #8fa2ff;
-    --color-wheel-3: #6ecfbd;
-    --color-wheel-4: #fec36a;
-    --color-wheel-5: #557ff0;
-    --color-wheel-6: #6dcebb;
-    --color-wheel-7: #f9623e;
-    --color-wheel-8: #8fa2ff;
+    --color-bg: #{$white-1};
+    --color-bg-menu: #{$white-2};
+    --color-bg-accent: #{$white-3};
+    --color-fg: #{$black};
+    --color-grey: #{$grey};
+    --color-accent-1: #{$color-1};
+    --color-accent-2: #{$color-2};
+    --color-accent-3: #{$color-3};
+    --color-accent-4: #{$color-4};
+    --color-accent-soft-1: #{$color-soft-1};
+    --color-accent-soft-2: #{$color-soft-2};
+    --color-accent-soft-3: #{$color-soft-3};
+    --color-accent-soft-4: #{$color-soft-4};
+    --color-wheel-1: #{$color-1};
+    --color-wheel-2: #{$color-2};
+    --color-wheel-3: #{$color-3};
+    --color-wheel-4: #{$color-4};
+    --color-wheel-5: #{$color-soft-1};
+    --color-wheel-6: #{$color-soft-2};
+    --color-wheel-7: #{$color-soft-3};
+    --color-wheel-8: #{$color-soft-4};
 }
