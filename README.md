@@ -14,6 +14,7 @@ $ yarn dev
 
 ## Sources (Will ja nicht, dass wer was sagen kann)
 
+-   Designs in designs were created by Marie Schaumann and should not be part of the grade
 -   Icons in src/assets/images + favicon from https://uxwing.com/
 -   Images in src/assets/food_images from https://www.chefkoch.de/
 -   Small snippets (i.e. Stackoverflow answers, codepens) are mentioned where they are used
