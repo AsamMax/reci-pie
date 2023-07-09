@@ -51,7 +51,10 @@ onMounted(loadRecipes)
     .recipeGrid {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax($recipe-grid-card-min-width, 1fr));
+        grid-template-columns: repeat(
+            auto-fit,
+            minmax($recipe-grid-card-min-width, $recipe-grid-card-max-width)
+        );
         gap: $spacing-large;
     }
 }

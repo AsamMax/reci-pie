@@ -36,9 +36,13 @@ onMounted(async () => {
     gap: $spacing-medium;
 }
 .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: $spacing-medium;
+    max-width: $recipe-grid-width;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax($recipe-grid-card-min-width, $recipe-grid-card-max-width)
+    );
+    gap: $spacing-large;
 }
 </style>
