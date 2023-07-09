@@ -38,8 +38,8 @@ watch(
             <label for="password">Password</label>
             <input type="password" id="password" name="password" v-model="passwordRef" />
             <button type="submit" @click="login">Login</button>
+            <span>Dev-user: foo - bar</span>
         </form>
-        <div>{{ userStore.current }}</div>
     </div>
 </template>
 
