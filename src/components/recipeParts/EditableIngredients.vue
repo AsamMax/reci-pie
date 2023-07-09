@@ -68,10 +68,11 @@ watch(() => props.edit, updateIngredients)
     </div>
 </template>
 <style scoped lang="scss">
+@import '@/assets/variables.scss';
 .ingredients {
     display: grid;
     grid-template-columns: repeat(3, max-content);
-    grid-gap: 10px;
+    grid-gap: $spacing-small;
 
     .ingredient {
         display: contents;

@@ -37,33 +37,34 @@ onMounted(loadRecipes)
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/variables.scss';
 .wrapper {
-    max-width: 1300px;
+    max-width: $recipe-grid-width;
     width: 100%;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 $spacing-medium;
     text-align: center;
     .search {
-        margin: 0 auto 4rem auto;
-        width: 70%;
+        margin: 0 auto $spacing-xl auto;
+        width: $recipe-grid-search-width;
     }
     .recipeGrid {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax($recipe-grid-card-min-width, 1fr));
+        gap: $spacing-large;
     }
 }
 button {
     position: fixed;
-    inset: auto 1rem 1rem auto;
-    height: 3rem;
+    inset: auto $spacing-medium $spacing-medium auto;
+    height: $spacing-xl;
     aspect-ratio: 1/1;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2.5rem;
+    font-size: $spacing-large;
     &:hover {
         background-color: var(--color-bg-accent);
     }

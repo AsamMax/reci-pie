@@ -41,17 +41,18 @@ const badgeSVG = computed(() => {
     </div>
 </template>
 <style lang="scss">
+@import '@/assets/variables.scss';
 .categoryBadge {
     position: absolute;
-    top: 0.5em;
-    left: 0.5em;
+    top: $spacing-small;
+    left: $spacing-small;
     background-color: var(--color-grey);
     z-index: 1;
-    border-radius: 1em;
+    border-radius: $spacing-medium;
     img {
-        width: 2em;
-        height: 2em;
-        margin: 0.7em 1em 0.5em;
+        width: $spacing-large;
+        height: $spacing-large;
+        margin: $spacing-small $spacing-medium $spacing-small;
         filter: invert(1);
     }
 }

@@ -25,5 +25,3 @@ const value = computed<number>({
         <span>{{ value }}</span>
     </template>
 </template>
-
-<style></style>

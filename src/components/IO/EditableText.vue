@@ -37,7 +37,9 @@ const value = computed<string>({
     <p v-else-if="!edit && props.type == 'paragraph'">{{ value }}</p>
 </template>
 
-<style>
+<style scoped lang="scss">
+@import '@/assets/variables.scss';
+
 input,
 textarea {
     width: 100%;
@@ -45,10 +47,10 @@ textarea {
 }
 
 .paragraph {
-    min-height: 5rem;
+    min-height: $spacing-xl;
 }
 
 .headline {
-    font-size: x-large;
+    font-size: $font-size-large;
 }
 </style>

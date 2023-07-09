@@ -29,23 +29,24 @@ const userStore = useUserStore()
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/variables.scss';
 header {
     position: sticky;
     inset: 0;
     bottom: auto;
     z-index: 1;
-    backdrop-filter: blur(5px);
-    max-width: 1500px;
+    backdrop-filter: $header-filter;
+    max-width: $header-width;
     margin: 0 auto;
 
     nav {
         display: flex;
         justify-content: space-around;
         align-items: center;
-        padding-top: 2rem;
-        padding-bottom: 2rem;
+        padding-top: $spacing-large;
+        padding-bottom: $spacing-large;
         img {
-            height: 5rem;
+            height: $header-image-size;
             aspect-ratio: 1/1;
             border-radius: 50%;
             cursor: pointer;
@@ -54,8 +55,8 @@ header {
             display: inline-block;
             color: var(--color-fg);
             text-decoration: none;
-            font-weight: 600;
-            padding: 0.2em 0.5em;
+            font-weight: $font-weight-bold;
+            padding: $spacing-xs $spacing-small;
 
             &:visited {
                 color: var(--color-fg);
@@ -65,7 +66,7 @@ header {
                 &:nth-child(#{$i}) {
                     &.router-link-active,
                     &:hover {
-                        border-bottom: 5px solid var(--color-accent-#{$i});
+                        border-bottom: $spacing-xs solid var(--color-accent-#{$i});
                     }
                 }
             }

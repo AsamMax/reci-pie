@@ -11,9 +11,10 @@ const emit = defineEmits<{
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/variables.scss';
 .tag {
-    padding: 0.25em 0.5em;
-    border-radius: 1em;
+    padding: $spacing-xs $spacing-small;
+    border-radius: $spacing-medium;
     color: var(--color-bg);
     text-align: center;
 

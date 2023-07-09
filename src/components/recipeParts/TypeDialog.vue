@@ -37,19 +37,20 @@ defineEmits<{ (e: 'update:mealType', value: MealType): void }>()
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/variables.scss';
 dialog {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 2rem;
+    border-radius: $spacing-large;
     border: none;
-    box-shadow: 0 0 0.5rem black;
+    box-shadow: 0 0 $spacing-small black;
     .tags {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-gap: 0.3rem;
-        margin-bottom: 0.5rem;
+        grid-gap: $spacing-xs;
+        margin-bottom: $spacing-small;
     }
 }
 </style>

@@ -54,7 +54,7 @@ const router = createRouter({
             component: FridgeModeView,
             meta: {
                 requiresAuth: true,
-                inNavigation: true
+                inNavigation: false
             }
         },
         {

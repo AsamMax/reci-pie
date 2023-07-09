@@ -38,24 +38,24 @@ const goToRecipe = () => {
     </div>
 </template>
 <style scoped lang="scss">
+@import '@/assets/variables.scss';
 .card {
     isolation: isolate;
     h2 {
         text-align: center;
-        font-weight: 600;
-        margin: 0.7em 0;
+        font-weight: $font-weight-bold;
+        margin: $spacing-medium 0;
     }
     .image {
         width: 100%;
         aspect-ratio: 3/2;
-        border-radius: 1em;
+        border-radius: $spacing-medium;
     }
     .tags {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.5em;
-        margin-top: 0.5em;
+        gap: $spacing-small;
+        margin-top: $spacing-small;
     }
 }
 </style>
-@/util/recipeImage

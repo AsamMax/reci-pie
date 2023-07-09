@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import router from '@/router'
 import { useRecipeStore } from '@/stores/recipe'
-import { useUserStore } from '@/stores/user'
 import type { SavedRecipe } from '@/types/recipe'
 import { onMounted, ref } from 'vue'
 
@@ -47,8 +46,9 @@ function spin() {
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/variables.scss';
 h1 {
-    margin-bottom: 1em;
+    margin-bottom: $spacing-medium;
 }
 .wheel {
     height: 100%;
@@ -58,6 +58,8 @@ h1 {
     align-items: center;
     justify-content: center;
     position: relative;
+
+    // The sizing of these elements is not extracted into variables, because they only make sense in this context and shouldn't be adjusted without looking at the exact result
     .pieces {
         width: 500px;
         height: 500px;
@@ -79,7 +81,7 @@ h1 {
             display: flex;
             align-items: start;
             justify-content: center;
-            color: #fff;
+            color: var(--color-bg);
             left: 29%;
             overflow-wrap: break-word;
             @for $i from 1 through 8 {
@@ -97,11 +99,11 @@ h1 {
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 10;
-        background-color: #e2e2e2;
-        border: 0.5em solid #fff;
-        color: #a2a2a2;
+        background-color: var(--color-bg-accent);
+        border: $spacing-small solid var(--color-bg);
+        color: var(--color-fg);
         aspect-ratio: 1 / 1;
-        width: 5em;
+        width: $spinner-button-size;
         border-radius: 50%;
         padding: 0;
     }

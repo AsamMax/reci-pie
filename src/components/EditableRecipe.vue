@@ -83,18 +83,19 @@ const tagDialog = ref<typeof TagDialog | null>(null)
     </div>
 </template>
 <style scoped lang="scss">
+@import '@/assets/variables.scss';
 .card {
     display: flex;
     flex-direction: column;
-    width: 95vw;
-    max-width: 1400px;
+    width: $recipe-edit-width;
+    max-width: $recipe-edit-max-width;
     margin: 0 auto;
-    padding: 1rem;
+    padding: $spacing-medium;
     border: none;
-    border-radius: 0.5rem;
-    box-shadow: 0 0 0.5rem black;
+    border-radius: $spacing-small;
+    box-shadow: 0 0 $spacing-small black;
     h3 {
-        font-size: x-large;
+        font-size: $font-size-large;
     }
     .general {
         display: flex;
@@ -105,17 +106,17 @@ const tagDialog = ref<typeof TagDialog | null>(null)
             width: calc(100% / 3);
         }
         img {
-            max-height: 20em;
+            max-height: $recipe-edit-image;
             object-fit: cover;
-            border-radius: 0.5rem;
-            margin-bottom: 1rem;
+            border-radius: $spacing-small;
+            margin-bottom: $spacing-medium;
         }
         .column {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: $spacing-small;
             .name {
                 margin: 0;
             }
@@ -125,7 +126,7 @@ const tagDialog = ref<typeof TagDialog | null>(null)
                 flex-wrap: wrap;
                 align-items: center;
                 justify-content: center;
-                gap: 0.5rem;
+                gap: $spacing-small;
                 min-width: 50%;
             }
         }
@@ -134,8 +135,8 @@ const tagDialog = ref<typeof TagDialog | null>(null)
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: $spacing-medium;
+            margin-top: $spacing-medium;
         }
     }
     .ingredients-and-nutrition {
@@ -143,8 +144,8 @@ const tagDialog = ref<typeof TagDialog | null>(null)
         flex-direction: row;
         align-items: flex-start;
         justify-content: space-between;
-        gap: 1rem;
-        margin-top: 1rem;
+        gap: $spacing-medium;
+        margin-top: $spacing-medium;
         > * {
             flex-basis: 100%;
         }

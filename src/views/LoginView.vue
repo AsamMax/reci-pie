@@ -44,18 +44,18 @@ watch(
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/variables.scss';
 // Add "card" look to login form
 .login {
     background-color: var(--color-bg-accent);
-    border-radius: 1rem;
-    padding: 2rem;
-    width: 30em;
-    max-width: 80%;
+    border-radius: $spacing-medium;
+    padding: $spacing-large;
+    width: $login-width;
     margin: 0 auto;
     form {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: $spacing-medium;
         input {
             background-color: var(--color-bg);
         }

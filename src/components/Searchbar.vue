@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
-const props = withDefaults(
+withDefaults(
     defineProps<{
         text: string
     }>(),
@@ -17,8 +15,9 @@ const emit = defineEmits<{ (e: 'update:text', value: string): void }>()
     />
 </template>
 <style scoped lang="scss">
+@import '@/assets/variables.scss';
 input {
-    font-size: 1.1rem;
+    font-size: $font-size-search;
     width: 100%;
 }
 </style>

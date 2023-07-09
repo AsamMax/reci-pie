@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useUserStore } from '@/stores/user'
 import RecipeCard from '@/components/RecipeCard.vue'
 import type { SavedRecipe } from '@/types/recipe'
 import { onMounted, ref } from 'vue'
@@ -29,16 +28,17 @@ onMounted(async () => {
     </div>
 </template>
 <style scoped lang="scss">
+@import '@/assets/variables.scss';
 .column {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: $spacing-medium;
 }
 .row {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
+    gap: $spacing-medium;
 }
 </style>
