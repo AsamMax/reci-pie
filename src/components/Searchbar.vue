@@ -12,8 +12,8 @@ const emit = defineEmits<{ (e: 'update:text', value: string): void }>()
 <template>
     <input
         placeholder="what recipe are you searching for?"
-        v-model="text"
-        @change="emit('update:text', text)"
+        :value="text"
+        @input="emit('update:text', ($event.target as HTMLInputElement).value)"
     />
 </template>
 <style scoped lang="scss">

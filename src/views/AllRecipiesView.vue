@@ -7,16 +7,19 @@ import { useRecipeStore } from '@/stores/recipe'
 
 const recipeStore = useRecipeStore()
 const recipies = ref<SavedRecipe[]>([])
+const search = ref('')
 
-async function loadRecipes(searchText?: string) {
-    recipies.value = await recipeStore.allRecipies(searchText)
+async function loadRecipes() {
+    console.log(search.value)
+
+    recipies.value = await recipeStore.allRecipies(search.value)
 }
 onMounted(loadRecipes)
 </script>
 
 <template>
     <div class="wrapper">
-        <Searchbar class="search" @update:text="loadRecipes($event)" />
+        <Searchbar class="search" v-model:text="search" @update:text="loadRecipes()" />
         <div class="recipeGrid">
             <RecipeCard
                 v-for="recipe in recipies"
